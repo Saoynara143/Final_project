@@ -1,17 +1,29 @@
-﻿string[] M;
-Console.WriteLine("Введите массив строк через запятую, без пробелов:");
+﻿
+string[] array1;
+Console.WriteLine("Введите массив строк, через запятую, без пробелов:");
 string stroka = Console.ReadLine();
-Console.WriteLine("Массив из строк, длинна которых 3 или меньше символа:");
-M = stroka.Split(',');
-var result = new string[M .Length];
-var realSize = 0;
-foreach (var value in M )
+array1 = stroka.Split(',');
+string[] array2 = new string[array1.Length];
+void SecondArrayWithIF(string[] array1, string[] array2)
 {
-    if (value.Length <= 3)
+    int count = 0;
+    for (int i = 0; i < array1.Length; i++)
     {
-        result[realSize] = value;
-        realSize++;
+    if(array1[i].Length <= 3)
+        {
+        array2[count] = array1[i];
+        count++;
+        }
     }
 }
-Console.WriteLine(string.Join(Environment.NewLine, result, 0, realSize));
-Console.ReadKey(true);
+void PrintArray(string[] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]} ");
+    }
+    Console.WriteLine();
+}
+SecondArrayWithIF(array1, array2);
+Console.WriteLine("Массив состоящий из строк, чья длинна меньше, либо ровна 3 символа:");
+PrintArray(array2);
